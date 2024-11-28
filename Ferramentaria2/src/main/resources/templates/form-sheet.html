@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario ficha de processo</title>
+</head>
+
+<style>
+    body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.815);
+    color: rgb(65, 63, 63);
+    font-family: 'Times New Roman', Times, serif;
+    height: 100vh;
+    overflow: hidden;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 5px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .inputSectionWrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin-bottom: 15px;
+        background-color: rgb(246, 248, 248);
+    }
+
+    .leftsideInputs,
+    .rightsideInputs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(246, 247, 245, 0.822);
+        border: 1px solid rgb(211, 212, 214);
+        padding: 45px;
+        box-shadow: 0px 0px 20px rgba(160, 156, 156, 0.527);
+        border-radius: 10px;
+    }
+
+    .inputSectionHeader {
+        font-size: 24px;
+
+        color: rgb(54, 54, 54);
+    }
+
+    .underline {
+        width: 100%;
+        border: 1px solid rgb(228, 228, 228);
+        margin-bottom: 20px;
+    }
+
+    .formRow {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        margin-bottom: 10px;
+    }
+
+    .inputWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .toolInput {
+        display: flex;
+        flex-direction: row;
+        gap: 2px;
+    }
+
+
+    label {
+        display: block;
+        color: rgb(54, 54, 54);
+        text-decoration: none;
+    }
+
+    input {
+        text-align: center;
+        background-color: rgb(250, 249, 249);
+        border: 1px solid rgb(190, 190, 190);
+        border-radius: 7px;
+        color: black;
+        display: flex;
+        height: 35px;
+        transition: 0.2s;
+        width: 90%;
+    }
+
+
+    input:focus {
+        width: 100%;
+        outline: none;
+        border-color: bisque;
+        background-color: rgb(218, 221, 223);
+    }
+
+    .lengthInput,
+    .positionInput {
+        width: 40px;
+    }
+
+    .lengthInput:focus,
+    .positionInput:focus     {
+        width: 40px;
+    }
+
+
+
+    #submit-form {
+        color: rgb(203, 207, 199);
+        margin-top: 25px;
+        height: 45px;
+        width: 30%;
+        background-color: rgb(53, 63, 78);
+        border: 1px solid rgb(117, 122, 131);
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.363);
+        transition: width 0.2s;
+        margin-bottom: 5px;
+    }
+
+
+    #submit-form:hover,
+    #submit-form:focus {
+        cursor: pointer;
+        outline: none;
+        transition: 0.2s;
+        width: 35%;
+        border-color: rgb(102, 130, 163);
+        background-color: rgba(53, 63, 78, 0.904);
+    }
+
+    .invalid {
+        border: 1px solid rgb(248, 88, 88);
+    }
+
+    .button-wrapper{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .alert{
+        color: rgb(172, 69, 69);
+    }
+
+    .header{
+        height: 50px;
+        display: flex;
+        flex-direction: center;
+        justify-content: space-between;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .link-header {
+        text-decoration: none;
+        text-align: center;
+        margin-top: 25px;
+        background-color: rgb(53, 63, 78);
+        color: rgb(226, 226, 226);
+        border: 1px solid rgb(137, 140, 141);
+        width: 300px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 13px rgb(202, 202, 202);
+    }
+
+    a:hover {
+        border-color: rgb(102, 130, 163);
+        background-color: rgba(53, 63, 78, 0.904);
+    }
+
+    .header{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 1px 1px 15px rgb(192, 192, 192);
+        height: 35px;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+    }
+
+    @media (max-width: 1200px) {
+        .main {
+            height: auto;
+            margin-top: 40px;
+        }
+
+        .inputSectionWrapper {
+            flex-direction: column;
+        }
+        body{
+            height: auto;
+            overflow: auto;
+        }
+        .link-header {
+            width: 280px;
+        }
+    }
+
+    @media (max-width: 650px) {
+        .main {
+            height: auto;
+            width: 100%;
+        }
+
+        .link-header{
+            width: 150px;
+        }
+
+        body{
+            height: auto;
+            overflow: auto;
+        }
+        .inputSectionWrapper {
+            flex-direction: column;
+        }
+
+        .formRow {
+            flex-direction: column;
+        }
+    }
+
+    .user{
+        font-size: 12px;
+        display: flex;
+        gap: 15px;
+        position: absolute;
+        right: 15px;
+    }
+    #logoutLink{
+        color: rgb(62, 108, 134);
+        font-weight: bold;
+    }
+
+</style>
+
+    <body> 
+        <div class="header">
+            <div class="user">
+                <span th:text="${user.fullName}"></span>
+                <a href="#" onclick="document.getElementById('logoutForm').submit();" id="logoutLink">SAIR</a>
+            </div>
+
+            <form id="logoutForm" action="#" th:action="@{/logout}" method="POST" style="display:none;">
+                <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+                <input type="submit" style="display:none;">
+            </form>
+        </div>
+
+        <div class="main">
+
+            <div th:if="${error}" class="alert" role="alert">
+                <span href="/entidades" th:text="${error}">Erros aparecerão aqui</span>
+            </div>
+
+            <form action="/salvar-formulario" method="post">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                <header>
+                    <a href="/entidades" class="link-header">Tabela de Cadastro</a>
+                    <a href="/ficha/ativas" class="link-header">Historico de Fichas</a>
+                </header>
+                <input type="hidden" name="userId" th:value="${user.id}">
+                <div class="inputSectionWrapper">
+
+                    <div class="leftsideInputs">
+                        <div class="input-section-header">Informações de setup</div>
+                        <div class="underline"></div>
+                        <div class="formRow">
+                            <div class="inputWrapper">
+                                <label for="machineInput">Máquina</label>
+                                <input type="text" id="machineInput" name="machineId" list="machineDatalist" 
+                                th:value="${formSubmission != null ? formSubmission.machineId : ''}" required>
+                                <datalist id="machineDatalist">
+                                    <option th:each="machine : ${machines}" th:value="${machine.machineId}" th:text="${machine.machineName}"></option>
+                                </datalist>
+                            </div>
+                            <div class="inputWrapper">
+                                <label for="chuckInput">Castanha</label>
+                                <input type="text" id="chuckInput" name="chuckId" list="chuckDatalist"
+                                th:value="${formSubmission != null ? formSubmission.chuckId : ''}" required>
+                                <datalist id="chuckDatalist">
+                                    <option th:each="chuck : ${chucks}" th:value="${chuck.chuckId}" th:text="${chuck.chuckName}"></option>
+                                </datalist>
+                            </div>
+                        </div>
+                        <div class="formRow">
+                            <div class="inputWrapper">
+                                <label for="chuckPressureInput">Pressão da placa</label>
+                                <input type="number" id="chuckPressureInput" name="chuckPressure"
+                                th:value="${formSubmission != null ? formSubmission.chuckPressure : ''}" required>
+                            </div>
+                            <div class="inputWrapper">
+                                <label for="holdPressureInput">Pressão do ponto</label>
+                                <input type="number" id="holdPressureInput" name="holdPressure"
+                                th:value="${formSubmission != null ? formSubmission.holdPressure : ''}">
+                            </div>
+                        </div>
+                        <div class="formRow">
+                            <div class="inputWrapper">
+                                <label for="itemInput">Item</label>
+                                <input type="text" id="itemInput" name="item"  
+                                th:value="${formSubmission != null ? formSubmission.item : ''}" required>
+                            </div>
+                            <div class="inputWrapper">
+                                <label for="descItemInput">Desc. Item</label>
+                                <input type="text" id="descItemInput" name="itemDescription" 
+                                th:value="${formSubmission != null ? formSubmission.itemDescription : ''}" required>
+                            </div>
+                        </div>
+                        <div class="formRow">
+                            <div class="inputWrapper">
+                                <label for="programInput">Programa</label>
+                                <input type="text" id="programInput" name="ncName" 
+                                th:value="${formSubmission != null ? formSubmission.ncName : ''}" required>
+                            </div>
+                            <div class="inputWrapper">
+                                <label for="cycleTimeInput">Tempo</label>
+                                <input type="text" id="cycleTimeInput" name="cycleTime" 
+                                th:value="${cycleTime != null ? cycleTime : ''}" required>
+                            </div>
+                        </div>
+                        <div class="formRow">
+                            <div class="inputWrapper">
+                                <label for="operationInput">Operação</label>
+                                <input type="text" id="operationInput" name="operationId" list="operationDatalist" 
+                                th:value="${formSubmission != null ? formSubmission.operationId : ''}" required>
+                                <datalist id="operationDatalist">
+                                    <option value="50">Usinagem</option>
+                                    <option value="51">Usinagem Lado 1</option>
+                                    <option value="52">Usinagem Lado 2</option>
+                                    <option value="60">Furo Fixação</option>
+                                    <option value="63">Chaveta</option>
+                                    <option value="75">Balanceamento</option>
+                                    <option value="90">Serra</option>
+                                    <option value="97">Furo Fixação Lado 1</option>
+                                    <option value="98">Furo Fixação Lado 2</option>
+                                </datalist>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rightsideInputs">
+                        <div class="input-section-header">Ferramentas</div>
+                        <div class="underline"></div>
+                        <datalist id="toolDatalist">
+                            <option th:each="tool : ${tools}" th:value="${tool.toolId}" th:text="${tool.toolName}"></option>
+                        </datalist>
+
+
+                        <div class="formRow">
+
+                            <div class="toolInput">
+                                <div class="inputWrapper">
+                                    <label for="tool1Input">Ferramenta 1</label>
+                                    <input type="text" id="tool1Input" name="tool1Id" list="toolDatalist" 
+                                        th:value="${formSubmission != null && toolList.size() > 0 ? toolList[0].toolId : ''}" required>
+                                </div>
+                            
+                                <div class="inputWrapper">
+                                    <label for="tool1Length">Com.</label>
+                                    <input type="number" id="tool1Length" name="tool1Length" class="lengthInput"
+                                        th:value="${formSubmission != null && toolList.size() > 0 && toolList[0].toolLength != null ? toolList[0].toolLength : ''}">
+                                </div>
+                                
+                                <div class="inputWrapper">
+                                    <label for="tool1Position">Pos.</label>
+                                    <input type="number" id="tool1Position" name="tool1Position" class="positionInput" 
+                                        th:value="${formSubmission != null && toolList.size() > 0 ? toolList[0].toolPosition : ''}" required>
+                                </div>
+                            </div>
+                        
+                            <div class="toolInput">
+                                <div class="inputWrapper">
+                                    <label for="tool2Input">Ferramenta 2</label>
+                                    <input type="text" id="tool2Input" name="tool2Id" list="toolDatalist"
+                                        th:value="${formSubmission != null && toolList.size() > 1 ? toolList[1].toolId : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool2Length">Com.</label>
+                                    <input type="number" id="tool2Length" name="tool2Length" class="lengthInput"
+                                        th:value="${formSubmission != null && toolList.size() > 1 && toolList[1].toolLength != null ? toolList[1].toolLength : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool2Position">Pos.</label>
+                                    <input type="number" id="tool2Position" name="tool2Position" class="positionInput"
+                                        th:value="${formSubmission != null && toolList.size() > 1 ? toolList[1].toolPosition : ''}">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="formRow">
+                            <div class="toolInput">
+                                <div class="inputWrapper">
+                                    <label for="tool3Input">Ferramenta 3</label>
+                                    <input type="text" id="tool3Input" name="tool3Id" list="toolDatalist"
+                                        th:value="${formSubmission != null && toolList.size() > 2 ? toolList[2].toolId : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool3Length">Com.</label>
+                                    <input type="number" id="tool3Length" name="tool3Length" class="lengthInput"
+                                        th:value="${formSubmission != null && toolList.size() > 2 && toolList[2].toolLength != null ? toolList[2].toolLength : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool3Position">Pos.</label>
+                                    <input type="number" id="tool3Position" name="tool3Position" class="positionInput"
+                                        th:value="${formSubmission != null && toolList.size() > 2 ? toolList[2].toolPosition : ''}">
+                                </div>
+                            </div>
+                            <div class="toolInput">
+                                <div class="inputWrapper">
+                                    <label for="tool4Input">Ferramenta 4</label>
+                                    <input type="text" id="tool4Input" name="tool4Id" list="toolDatalist"
+                                        th:value="${formSubmission != null && toolList.size() > 3 ? toolList[3].toolId : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool4Length">Com.</label>
+                                    <input type="number" id="tool4Length" name="tool4Length" class="lengthInput"
+                                        th:value="${formSubmission != null && toolList.size() > 3 && toolList[3].toolLength != null ? toolList[3].toolLength : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool4Position">Pos.</label>
+                                    <input type="number" id="tool4Position" name="tool4Position" class="positionInput"
+                                        th:value="${formSubmission != null && toolList.size() > 3 ? toolList[3].toolPosition : ''}">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="formRow">
+                            <div class="toolInput">
+                                <div class="inputWrapper">
+                                    <label for="tool5Input">Ferramenta 5</label>
+                                    <input type="text" id="tool5Input" name="tool5Id" list="toolDatalist"
+                                        th:value="${formSubmission != null && toolList.size() > 4 ? toolList[4].toolId : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool5Length">Com.</label>
+                                    <input type="number" id="tool5Length" name="tool5Length" class="lengthInput"
+                                        th:value="${formSubmission != null && toolList.size() > 4 && toolList[4].toolLength != null ? toolList[4].toolLength : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool5Position">Pos.</label>
+                                    <input type="number" id="tool5Position" name="tool5Position" class="positionInput"
+                                        th:value="${formSubmission != null && toolList.size() > 4 ? toolList[4].toolPosition : ''}">
+                                </div>
+                            </div>
+                            <div class="toolInput">
+                                <div class="inputWrapper">
+                                    <label for="tool6Input">Ferramenta 6</label>
+                                    <input type="text" id="tool6Input" name="tool6Id" list="toolDatalist"
+                                        th:value="${formSubmission != null && toolList.size() > 5 ? toolList[5].toolId : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool6Length">Com.</label>
+                                    <input type="number" id="tool6Length" name="tool6Length" class="lengthInput"
+                                        th:value="${formSubmission != null && toolList.size() > 5 && toolList[5].toolLength != null ? toolList[5].toolLength : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool6Position">Pos.</label>
+                                    <input type="number" id="tool6Position" name="tool6Position" class="positionInput"
+                                        th:value="${formSubmission != null && toolList.size() > 5 ? toolList[5].toolPosition : ''}">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="formRow">
+                            <div class="toolInput">
+                                <div class="inputWrapper">
+                                    <label for="tool7Input">Ferramenta 7</label>
+                                    <input type="text" id="tool7Input" name="tool7Id" list="toolDatalist"
+                                        th:value="${formSubmission != null && toolList.size() > 6 ? toolList[6].toolId : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool7Length">Com.</label>
+                                    <input type="number" id="tool7Length" name="tool7Length" class="lengthInput"
+                                        th:value="${formSubmission != null && toolList.size() > 6 && toolList[6].toolLength != null ? toolList[6].toolLength : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool7Position">Pos.</label>
+                                    <input type="number" id="tool7Position" name="tool7Position" class="positionInput"
+                                        th:value="${formSubmission != null && toolList.size() > 6 ? toolList[6].toolPosition : ''}">
+                                </div>
+                            </div>
+                            <div class="toolInput">
+                                <div class="inputWrapper">
+                                    <label for="tool8Input">Ferramenta 8</label>
+                                    <input type="text" id="tool8Input" name="tool8Id" list="toolDatalist"
+                                        th:value="${formSubmission != null && toolList.size() > 7 ? toolList[7].toolId : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool8Length">Com.</label>
+                                    <input type="number" id="tool8Length" name="tool8Length" class="lengthInput"
+                                        th:value="${formSubmission != null && toolList.size() > 7 && toolList[7].toolLength != null ? toolList[7].toolLength : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool8Position">Pos.</label>
+                                    <input type="number" id="tool8Position" name="tool8Position" class="positionInput"
+                                        th:value="${formSubmission != null && toolList.size() > 7 ? toolList[7].toolPosition : ''}">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="formRow">
+                            <div class="toolInput">
+                                <div class="inputWrapper">
+                                    <label for="tool9Input">Ferramenta 9</label>
+                                    <input type="text" id="tool9Input" name="tool9Id" list="toolDatalist"
+                                        th:value="${formSubmission != null && toolList.size() > 8 ? toolList[8].toolId : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool9Length">Com.</label>
+                                    <input type="number" id="tool9Length" name="tool9Length" class="lengthInput"
+                                        th:value="${formSubmission != null && toolList.size() > 8 && toolList[8].toolLength != null ? toolList[8].toolLength : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool9Position">Pos.</label>
+                                    <input type="number" id="tool9Position" name="tool9Position" class="positionInput"
+                                        th:value="${formSubmission != null && toolList.size() > 8 ? toolList[8].toolPosition : ''}">
+                                </div>
+                            </div>
+                            <div class="toolInput">
+                                <div class="inputWrapper">
+                                    <label for="tool10Input">Ferramenta 10</label>
+                                    <input type="text" id="tool10Input" name="tool10Id" list="toolDatalist"
+                                        th:value="${formSubmission != null && toolList.size() > 9 ? toolList[9].toolId : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool10Length">Com.</label>
+                                    <input type="number" id="tool10Length" name="tool10Length" class="lengthInput"
+                                        th:value="${formSubmission != null && toolList.size() > 9 && toolList[9].toolLength != null ? toolList[9].toolLength : ''}">
+                                </div>
+                                <div class="inputWrapper">
+                                    <label for="tool10Position">Pos.</label>
+                                    <input type="number" id="tool10Position" name="tool10Position" class="positionInput"
+                                        th:value="${formSubmission != null && toolList.size() > 9 ? toolList[9].toolPosition : ''}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-wrapper">
+                    <button type="submit" id="submit-form">Gerar Ficha</button>
+                </div>
+            </form>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+
+                const checkInputInDatalist = (inputId, datalistId) => {
+                    const inputField = document.getElementById(inputId);
+                    const inputValue = inputField.value.trim();
+                    const datalistOptions = document.getElementById(datalistId).options;
+                    const validOption = Array.from(datalistOptions).some(option => option.value === inputValue);
+
+                    let errorMessage = '';
+                    if (inputValue && !validOption) {
+                        if (inputId.includes('machine')) {
+                            errorMessage = `O valor "${inputValue}" não é uma opção válida para a máquina.`;
+                        } else if (inputId.includes('chuck')) {
+                            errorMessage = `O valor "${inputValue}" não é uma opção válida para a castanha.`;
+                        } else if (inputId.includes('operation')) {
+                            errorMessage = `O valor "${inputValue}" não é uma opção válida para a operação.`;
+                        } else if (inputId.includes('tool')) {
+                            errorMessage = `O valor "${inputValue}" não é uma opção válida para a ferramenta.`;
+                        } else {
+                            errorMessage = `O valor "${inputValue}" não é válido para o campo.`;
+                        }
+                        inputField.classList.add('invalid');
+                        alert(errorMessage);
+                        return false;
+                    } else {
+                        inputField.classList.remove('invalid');
+                        return true;
+                    }
+                };
+
+                const checkToolPosition = (toolId, toolPositionId) => {
+                    const toolInput = document.getElementById(toolId);
+                    const toolPositionInput = document.getElementById(toolPositionId);
+                    const toolValue = toolInput.value.trim();
+                    const toolPositionValue = toolPositionInput.value.trim();
+
+                    if (toolValue && !toolPositionValue) {
+                        toolInput.classList.add('invalid');
+                        toolPositionInput.classList.add('invalid');
+                        alert(`Favor fornecer a posição da ferramenta: ${toolValue}`);
+                        return false;
+                    } else {
+                        toolInput.classList.remove('invalid');
+                        toolPositionInput.classList.remove('invalid');
+                        return true;
+                    }
+                };
+
+                const validateCycleTime = (inputId) => {
+                    const cycleTimeInput = document.getElementById(inputId);
+                    let cycleTimeValue = cycleTimeInput.value.trim();
+
+                    cycleTimeValue = cycleTimeValue.replace(/\D/g, '');
+
+                    if (cycleTimeValue.length <= 4) {
+                        cycleTimeValue = cycleTimeValue.replace(/(\d{2})(\d{2})$/, '$1:$2');
+                    } else if (cycleTimeValue.length === 6) {
+                        cycleTimeValue = cycleTimeValue.replace(/(\d{2})(\d{2})(\d{2})$/, '$1:$2:$3');
+                    }
+
+                    cycleTimeInput.value = cycleTimeValue;
+
+                    const cycleTimePattern = /^(?:\d{2}:\d{2}:\d{2}|\d{2}:\d{2})$/;
+
+                    if (!cycleTimePattern.test(cycleTimeValue)) {
+                        cycleTimeInput.classList.add('invalid');
+                        alert('O formato de tempo deve ser "00:00:00" ou "00:00".');
+                        return false;
+                    } else {
+                        cycleTimeInput.classList.remove('invalid');
+                        return true;
+                    }
+                };
+
+                const autoFillDescItemInput = () => {
+                    const itemInput = document.getElementById('itemInput');
+                    const itemDescription = document.getElementById('descItemInput');
+                    let itemValue = itemInput.value.trim();
+
+                    itemValue = itemValue.toUpperCase();
+                    itemInput.value = itemValue;
+
+                    const regex = /^PF(\d+)([a-zA-Z])(\d{1,2})$/;
+
+                    const match = itemValue.match(regex);
+                    
+                    if (match) {
+                        const numberAfterPF = match[1];
+                        const letterAfterNumber = match[2];
+                        const numberAfterLetter = match[3];
+
+                        itemDescription.value = `POLIA DE FERRO ${numberAfterPF} ${letterAfterNumber}${numberAfterLetter}`;
+                    }
+                };
+
+                document.getElementById('itemInput').addEventListener('blur', function() {
+                    autoFillDescItemInput();
+                });
+
+                document.getElementById('cycleTimeInput').addEventListener('blur', function() {
+                    validateCycleTime('cycleTimeInput');
+                });
+
+                document.getElementById('submit-form').addEventListener('click', function(event) {
+                    let isValid = true;
+
+                    isValid &= checkInputInDatalist('machineInput', 'machineDatalist');
+                    isValid &= checkInputInDatalist('chuckInput', 'chuckDatalist');
+                    isValid &= checkInputInDatalist('operationInput', 'operationDatalist');
+
+                    for (let i = 1; i <= 10; i++) {
+                        isValid &= checkInputInDatalist(`tool${i}Input`, 'toolDatalist');
+                    }
+
+                    for (let i = 2; i <= 10; i++) {
+                        isValid &= checkToolPosition(`tool${i}Input`, `tool${i}Position`);
+                    }
+
+                    if (!isValid) {
+                        event.preventDefault();
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

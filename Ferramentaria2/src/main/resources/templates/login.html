@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<style>
+    body {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.815);
+        color: rgb(65, 63, 63);
+        font-family: 'Times New Roman', Times, serif;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    label {
+        padding-top: 10px;
+        font-size: 17px;
+        text-align: center;
+    }
+
+    input {
+        text-align: center;
+        background-color: rgba(250, 249, 249, 0.918);
+        border: 1px solid rgb(209, 210, 212);
+        border-radius: 10px;
+        color: black;
+        display: flex;
+    }
+
+    input[type="file"]::-webkit-file-upload-button {
+        background-color: rgb(53, 63, 78);
+        color: rgb(203, 207, 199);
+        border: 1px solid rgb(22, 36, 58);
+        border-radius: 5px;
+        padding: 5px;
+        margin: 4px;
+        cursor: pointer;
+        font-size: 12px;
+    }
+
+    input:focus {
+        outline: none;
+        transition: 0.2s;
+        border-color: bisque;
+        background-color: rgb(218, 221, 223);
+    }
+
+
+    form {
+        width: 400px;
+        background-color: rgb(26, 35, 48);
+        border: 1px solid rgb(22, 36, 58);
+        border-radius: 25px;
+        box-shadow: 0px 0px 20px rgba(160, 156, 156, 0.527);
+        position: relative;
+        padding: 15px;
+        background-color: rgba(246, 247, 245, 0.822);
+        border: 1px solid rgb(211, 212, 214);
+    }
+
+    .inputSection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        
+    }
+
+    .inputSection input {
+        height: 35px;
+        width: 75%;
+    }
+
+    .inputSection input:focus {
+        width: 80%;
+    }
+
+    #submitButton {
+        color: rgb(203, 207, 199);
+        margin-top: 25px;
+        height: 45px;
+        width: 50%;
+        background-color: rgb(53, 63, 78);
+        border: 1px solid rgb(117, 122, 131);
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.363);
+        transition: width 0.2s;
+        font-size: 17px;
+        margin-bottom: 5px;
+    }
+
+    #submitButton:hover,
+    #submitButton:focus {
+        outline: none;
+        transition: 0.2s;
+        width: 55%;
+        border-color: rgb(102, 130, 163);
+        background-color: rgba(53, 63, 78, 0.904);
+    }
+
+    button:hover{
+        cursor: pointer;
+    }
+
+    a{
+        color: rgb(172, 69, 69);
+    }
+    a:hover{
+        color: rgb(190, 38, 38);
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* Your CSS styles remain the same */
+    </style>
+</head>
+<body>
+    <form action="/login" method="POST" th:action="@{/login}">
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+        
+        <div class="inputSection">
+            <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                Usuário ou senha inválidos.
+            </div>
+
+            <label for="username">Usuário</label>
+            <input type="text" name="username" id="username" required>
+
+            <label for="password">Senha</label>
+            <input type="password" name="password" id="password" required>
+
+            <button type="submit" id="submitButton">Entrar</button>
+        </div>
+    </form>
+</body>
+</html>

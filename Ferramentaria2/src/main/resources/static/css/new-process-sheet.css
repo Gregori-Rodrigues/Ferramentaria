@@ -1,0 +1,376 @@
+       
+body {
+    display: flex;
+    justify-content: center;
+}
+
+div, input{
+    box-sizing: border-box;
+}
+
+input{
+    border: 0;
+}
+
+input:focus{
+    outline: 1px solid rgb(44, 138, 155);
+}
+
+.processSheetWrapper{
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+
+.processSheetHeader{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(228, 226, 226);
+    width: 100%;
+    font-size: 25px;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    width: 100%;
+}
+
+.label{
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    height: 20px;
+}
+
+.field{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    height: 20px;
+    background-color: white;
+}
+
+.subheader{
+    width: 100%;
+    background-color: rgb(228, 226, 226);
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid black;
+    padding: 1px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#item{
+    width: 100px;
+    border-right: 1px solid;
+}
+
+#fieldItem{
+    width: 175px;
+    border-right: 1px solid;
+}
+
+#machineName,
+#chuckName,
+#tool,
+#itemDescription,
+#observation{
+    width: 75px;
+    border-right: 1px solid;
+}
+
+#fieldItemDescription{
+    flex: auto;
+}
+
+#fieldMachineName,
+#fieldChuckName{
+    width: 200px;
+    border-right: 1px solid;
+}
+
+#operationId,
+#ncName{
+    width: 75px;
+    border-right: 1px solid;
+}
+
+#fieldOperationId,
+#fieldNcName{
+    width: 85px;
+    border-right: 1px solid;
+}
+
+#chuckPressure,
+#holdPressure{
+    width: 90px;
+    border-right: 1px solid;
+}
+
+#fieldChuckPressure,
+#fieldHoldPressure{
+    width: 50px;
+    border-right: 1px solid;
+}
+
+#cycleTime,
+#piecesPerHour{
+    width: 55px;
+    border-right: 1px solid;
+}
+
+#fieldCycleTime,
+#fieldPiecesPerHour{
+    flex: auto;
+}
+
+#observation{
+    height: 40px;
+}
+
+#observationInput{
+    flex: auto;
+    font-size: 11px;
+}
+
+
+#save-button {
+    cursor: pointer;
+    position: relative;
+    position: fixed;
+    z-index: 1000;
+    bottom: 50px;
+    right: 100px;
+    width: 50px;
+    height:  auto;
+}
+
+.workspace {
+    width: 100%;
+    height: 800px;
+    border: 1px solid;
+    position: relative;
+    overflow: hidden;
+    background: none;
+}
+
+.workspace::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/icons/workspace-background-image.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    transform: rotate(-45deg) translate(150px, -150px);
+    transform-origin: center;
+    opacity: 0.09; 
+    z-index: -1;
+}
+
+.toolSectionWrapper{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    position: absolute;
+    left:50px;
+    top:450px;
+}
+
+.toolRow{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    border-top: 0;
+    width: 100%;
+}
+
+.measurementRow{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    border-top: 0;
+    width: 100%;
+    margin-bottom: 3px;
+}
+
+#fieldTool{
+    width: 380px;
+    border-right: 1px solid;
+}
+
+#turretPosition{
+    width: 90px;
+    border-right: 1px solid;
+}
+
+#fieldTurretPosition{
+    flex: auto;
+}
+
+#measurement{
+    font-weight: bold;
+    height: 25px;
+    width: 150px;
+    text-align: center;
+    border-right: 1px solid;
+}
+
+
+.measurementInput{
+    width: 150px;
+    overflow: hidden;
+    font-size: 11px;
+    text-align: center;
+}
+
+#measurementInput1,
+#measurementInput2{
+    border-right: 1px solid;
+}
+
+#alteration,
+.alterationInput{
+    width: 500px;
+    border-right: 1px solid black;
+    
+}
+
+.alterationInput{
+    font-size: 12px;
+}
+
+#data{
+    width: 100px;
+}
+
+.dataInput{
+    width: 100px;
+    text-align: center;
+    font-size: 12px;
+}
+
+
+.authorRow{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.authorWrapper{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    position: absolute;
+    left: 50px;
+    bottom: 35px;
+}
+
+#developed,
+#developedInput,
+#approved,
+#approvedInput{
+    width: 150px;
+    height: 25px;
+    text-align: center;
+}
+
+#developed,
+#approved{
+    border-bottom: 1px solid;
+}
+
+#developed,
+#developedInput{
+    border-right: 1px solid;
+}
+
+.timeStamp{
+    position: absolute;
+    bottom: 15px;
+    left: 50px;
+    font-size: 13px;
+    color: rgb(0, 0, 0);
+}
+
+#save-button:hover {
+    transition: 0.2s;
+    bottom: 55px;
+}
+
+.camera-button img, #save-button img { 
+    width: 100%; height: auto; 
+}
+
+.camera-button {
+    cursor: pointer;
+    position: relative;
+    position: fixed;
+    z-index: 1000;
+    bottom: 50px;
+    right: 25px;
+    width: 50px;
+    height: auto;
+}
+
+.camera-button:hover {
+    transition: 0.2s;
+    bottom: 55px;
+}
+
+
+.imageContainer {
+    position: absolute;
+    border: 1px solid grey;
+    z-index: 10;
+    max-width: 300px;
+    top: 0;
+    left: 0;
+}
+
+.imageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: 10;
+}
+
+.imageContainer,
+.imageContainer * {
+    -ms-touch-action: none;
+    touch-action: none;
+}
+
+@media (max-width: 750px) {
+    body {
+        justify-content: left;
+    }
+}
+
+@media print {
+    #save-button {
+        display: none !important;
+    }
+}
